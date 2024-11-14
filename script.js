@@ -83,12 +83,27 @@ const fruit = [
   "Yuzu",
 ];
 
-// TODO ***** Filter The List Based On User Input *****
-// Write a function called search(), which will trigger based on the event listener you created in the last step. This function will return a list called results. This function will filter the fruit list based on whatever user input is in the search box. If the string in the user input appears ANYWHERE in the fruit name, it should be added to results list. It also should not matter if a user types upper or lower case letters. That means that if a user types “ap” both “Apple” and “Grape” will appear in the results list.
+// ***** Add An Event Listener For Key Strokes *****
+// Create an event listener in JavaScript that will trigger when a user types.
+
+input.addEventListener("input", (e) => {
+  console.log("User typed:", e.target.value);
+});
+
+// ***** Filter The List Based On User Input *****
+// Write a function called search(), which will trigger based on the event listener you created in the last step.
+//// This function will return a list called results.
+//// his function will filter the fruit list based on whatever user input is in the search box.
+//// If the string in the user input appears ANYWHERE in the fruit name, it should be added to results list.
+//// It also should not matter if a user types upper or lower case letters.
+//// That means that if a user types “ap” both “Apple” and “Grape” will appear in the results list.
 
 function search(str) {
   let results = [];
-
+  let result = fruit.filter((item) => {
+    return item.toLowerCase().includes(str.toLowerCase());
+  });
+  results.push(result);
   return results;
 }
 
