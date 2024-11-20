@@ -1,7 +1,9 @@
+// input and suggestions container
 const input = document.querySelector("#fruit");
-const suggestions = document.querySelector(".suggestions ul");
+const suggestionsList = document.querySelector(".suggestions ul");
 
-const fruit = [
+// fruit list
+const fruits = [
   "Apple",
   "Apricot",
   "Avocado 🥑",
@@ -83,42 +85,50 @@ const fruit = [
   "Yuzu",
 ];
 
-// ***** Add An Event Listener For Key Strokes *****
-// Create an event listener in JavaScript that will trigger when a user types.
+// Function to filter fruits based on input, creates arr of results
 
-input.addEventListener("input", (e) => {
-  console.log("User typed:", e.target.value);
-});
-
-// ***** Filter The List Based On User Input *****
-// Write a function called search(), which will trigger based on the event listener you created in the last step.
-//// This function will return a list called results.
-//// his function will filter the fruit list based on whatever user input is in the search box.
-//// If the string in the user input appears ANYWHERE in the fruit name, it should be added to results list.
-//// It also should not matter if a user types upper or lower case letters.
-//// That means that if a user types “ap” both “Apple” and “Grape” will appear in the results list.
-
-function search(str) {
+function search(inputVal) {
   let results = [];
-  let result = fruit.filter((item) => {
-    return item.toLowerCase().includes(str.toLowerCase());
+  fruits.forEach((fruit) => {
+    if (fruit.toLowerCase().includes(inputVal.toLowerCase())) {
+      results.push(fruit);
+    }
   });
-  results.push(result);
+  console.log(results);
   return results;
 }
 
-// ??? TODO *****  *****
-function searchHandler(e) {}
+// Function to handle input event
+function searchHandler(e) {
+  const inputVal = e.target.value;
+  let results = search(inputVal);
+  showSuggestions(results, inputVal);
+}
 
 // TODO ***** Highlight the suggestion below a user’s cursor *****
 // Add an event listener to trigger whenever a user hovers over one of the suggestions in the drop down list. Write a function which highlights the suggestion. Attach this function to the event listener.
 
-function showSuggestions(results, inputVal) {}
+function showSuggestions(results, inputVal) {
+  //create drop down search result list
+
+  suggestionsList.innerHTML = "";
+
+  for (fruit of results) {
+    let listItem = document.createElement("li");
+    listItem.innerText = fruit;
+    suggestionsList.appendChild(listItem);
+  }
+}
 
 // TODO ***** Populate the search box with a user’s selected suggestion *****
 // When a user clicks on a suggestion, that string should fill the Search Bar. Add an event listener which triggers when a user clicks. Write a function useSuggestion() to populate the Search Bar with the suggestion. Add this function to the event listener.
 
 function useSuggestion(e) {}
 
+// an event listener for key strokes.
+input.addEventListener("input", (e) => {
+  // console.log("User typed:", e.target.value);
+});
+
 input.addEventListener("keyup", searchHandler);
-suggestions.addEventListener("click", useSuggestion);
+suggestionsList.addEventListener("click", useSuggestion);
