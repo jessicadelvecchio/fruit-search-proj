@@ -3,7 +3,7 @@
 }
 
 :focus {
- /* TODO */
+  /* TODO */
 }
 
 body {
@@ -11,21 +11,21 @@ body {
 }
 
 input {
- /* TODO */
+  /* TODO */
 }
 
 .search-container {
- /* TODO */
+  /* TODO */
 }
 .search-container input,
 .search-container .suggestions {
   /* TODO */
 }
 .search-container input {
- /* TODO */
+  /* TODO */
 }
 .search-container .suggestions {
-   /* TODO */
+  /* TODO */
 }
 
 ul {
@@ -37,10 +37,13 @@ ul.has-suggestions {
 ul li {
   /* TODO */
 }
-ul li:hover {
+/* ul li:hover {
   /* TODO */
+
+.item-on-hover {
+  background-color: pink;
 }
 
 input {
-   /* TODO */
+  /* TODO */
 }
