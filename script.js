@@ -105,21 +105,23 @@ function searchHandler(e) {
 // * Function to show search list and highlight items on hover
 function showSuggestions(results, inputVal) {
   suggestionsList.innerHTML = "";
-  // listItem.classList.add("has-suggestion");
 
-  for (fruit of results) {
-    let listItem = document.createElement("li");
+  if (results) {
+    for (fruit of results) {
+      let listItem = document.createElement("li");
 
-    listItem.innerText = fruit;
-    suggestionsList.appendChild(listItem);
+      listItem.innerText = fruit;
+      suggestionsList.appendChild(listItem);
 
-    listItem.addEventListener("mouseover", () => {
-      listItem.classList.add("item-on-hover");
-    });
+      listItem.addEventListener("mouseover", () => {
+        listItem.classList.add("item-on-hover");
+      });
 
-    listItem.addEventListener("mouseout", () => {
-      listItem.classList.remove("item-on-hover");
-    });
+      listItem.addEventListener("mouseout", () => {
+        listItem.classList.remove("item-on-hover");
+      });
+    }
+    suggestionsList.classList.add("has-suggestion");
   }
 }
 
