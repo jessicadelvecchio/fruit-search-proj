@@ -32,7 +32,7 @@ body {
 }
 
 /* search bar */
-.search-container input {
+input {
   width: 100%;
   padding: 0.5em;
   font-size: 20px;
@@ -49,8 +49,7 @@ body {
 }
 
 /* search list items  */
-.search-container .suggestions ul {
-  /* TODO */
+ul {
   list-style: none;
   position: absolute;
   width: 100%;
@@ -58,22 +57,19 @@ body {
   padding: 0;
   display: none;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.25);
 }
 
-.suggestions.has-suggestions ul {
-  /* TODO */
+/* display if search has suggestions */
+ul.has-suggestions {
   display: block;
 }
+
 ul li {
   /* TODO */
+  padding: 0.4em;
+  cursor: pointer;
 }
-/* ul li:hover {
-  /* TODO */
-
-.item-on-hover {
-  background-color: pink;
+ul li:hover {
+  background-color: #ea541e;
 }
-
-/* TODO */
-/* input {
-} */

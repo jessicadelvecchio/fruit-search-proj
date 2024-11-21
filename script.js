@@ -91,7 +91,6 @@ function search(inputVal) {
       results.push(fruit);
     }
   });
-  // console.log(results);
   return results;
 }
 
@@ -99,38 +98,38 @@ function search(inputVal) {
 function searchHandler(e) {
   const inputVal = e.target.value;
   let results = search(inputVal);
+  clearList();
   showSuggestions(results, inputVal);
 }
 
-// * Function to show search list and highlight items on hover
+// * Function to show search list / if inputVal is deleted, remove list
 function showSuggestions(results, inputVal) {
-  suggestionsList.innerHTML = "";
+  suggestionsList.classList.add("has-suggestions");
 
-  if (results) {
-    for (fruit of results) {
+  if (inputVal === "") {
+    clearList();
+  } else {
+    for (let fruit of results) {
       let listItem = document.createElement("li");
-
       listItem.innerText = fruit;
       suggestionsList.appendChild(listItem);
-
-      listItem.addEventListener("mouseover", () => {
-        listItem.classList.add("item-on-hover");
-      });
-
-      listItem.addEventListener("mouseout", () => {
-        listItem.classList.remove("item-on-hover");
-      });
     }
-    suggestionsList.classList.add("has-suggestion");
   }
 }
 
 // * Function to populate the search box with a user’s selected suggestion *****
 function useSuggestion(e) {
-  const clickedItemValue = e.target.innerText;
-  console.log(clickedItemValue);
-  input.value = clickedItemValue;
+  const selectedFruit = e.target.innerText;
+  input.value = selectedFruit;
+  input.focus();
+  clearList();
 }
+
+// * Function to clear search list and remove has-suggestions class
+const clearList = () => {
+  suggestionsList.classList.remove("has-suggestions");
+  suggestionsList.innerText = "";
+};
 
 // * Eventlisteners
 input.addEventListener("keyup", searchHandler);
